@@ -1,0 +1,129 @@
+.footer h4 {
+    font-family: "Heebo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.footer a,
+p {
+    font-family: "Heebo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.footer input[type="text"]::placeholder {
+    color: #ffffffb9;
+}
+
+
+
+/* Estilos nav bar Aldo */
+
+
+.box-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-nav .linea-nav {
+    width: 0%;
+    border-bottom: solid 1px #014ca1;
+    border-radius: 0px;
+    transition: width 0.5s ease;
+}
+
+.item-nav:hover .linea-nav {
+    width: 100%;
+}
+
+
+.item-nav a,
+.view-perfil {
+    color: #1e3c5e;
+    font-weight: lighter;
+}
+
+.nav-link {
+    padding: 0% !important;
+}
+
+.dropdown-item:hover {
+    background-color: #6d90b8 !important;
+}
+
+/* Estilos botones Acceso y hazte usuario header */
+.item-buttons {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-buttons button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: rgb(245, 246, 252);
+    color: var(--bs-dark);
+    transition: background-color 1s;
+}
+
+.item-buttons button:hover {
+    background-color: rgb(220, 225, 248);
+}
+
+.item-buttons {
+    display: flex;
+    text-align: center;
+    /* Centra los botones horizontalmente */
+    margin-top: 20px;
+    /* Añade un margen superior para separar los botones del texto */
+}
+
+.item-buttons button {
+    margin: 5px;
+    /* Añade un margen alrededor de los botones */
+    padding: 12px 24px;
+    /* Ajusta el tamaño de los botones */
+    font-size: 16px;
+    /* Aumenta el tamaño de la fuente */
+    cursor: pointer;
+    /* Cambia el cursor a mano al pasar sobre los botones */
+}
+
+/* Estilos selector de login header */
+.selector-login {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 3.8rem;
+    bottom: 0.1rem;
+}
+
+.div-botones-login-registro {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 17px;
+}
+
+.div-login-header {
+    display: block;
+    width: 711px;
+    overflow: hidden;
+}
+
+.linea-seleccionada {
+    width: 100%;
+    border-bottom: solid 2px #014ca1;
+}
