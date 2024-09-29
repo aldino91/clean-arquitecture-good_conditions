@@ -1,0 +1,150 @@
+{% extends 'base.html' %} {% block head %}
+<link href="{{ url_for('static', filename='css/auth.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/credito-prestamo.css') }}" rel="stylesheet" />
+<script src="{{ url_for('static', filename='js/credito-prestamo.js') }}"></script>
+{% endblock %} {% block content %}
+
+<div class="container-form-client" style="position: relative">
+
+    <div class="container-credito">
+        <br><br>
+        <!-- Mensajes de alerta al utilizar flash -->
+        {% if get_flashed_messages(with_categories=true) %}
+
+        <div class="alert-container">
+            {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+            <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Barra de progresso -->
+
+        <div class='box-progress'>
+
+            <div class="progress">
+
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+            </div>
+        </div>
+
+        <div style='margin-top: 15px;'>
+            <h1 class="title-page">¿Cuál es la finalidad de tu préstamo?</h1>
+        </div>
+
+        <div class="box-finalidad">
+
+            <div class="item-finalidad">
+
+                <div class="image-illustrator">
+                    <img alt="Reformas" src="https://www.bbva.es/pub/dobby/dist/assets/img/sofa.svg" />
+                </div>
+
+                <div>Reformas</div>
+            </div>
+
+            <div class="item-finalidad">
+
+                <div class="image-illustrator">
+                    <img alt="Coche" src="https://www.bbva.es/pub/dobby/dist/assets/img/Car-Loan-Euro.png" />
+                </div>
+
+                <div>Coche</div>
+            </div>
+
+            <div class="item-finalidad">
+
+                <div class="image-illustrator">
+                    <img alt="Efic.energetica" src="https://www.bbva.es/pub/dobby/dist/assets/img/eco.svg" />
+                </div>
+
+                <div>Efic.energetica</div>
+            </div>
+
+            <div class="item-finalidad">
+
+                <div class="image-illustrator">
+                    <img alt="Otros" src="https://www.bbva.es/pub/dobby/dist/assets/img/Loan-Euro.png" />
+                </div>
+
+                <div>Otros</div>
+            </div>
+        </div>
+        <!-- Formulario -->
+
+        <form method="post" action="{{ url_for('credito_bp.PostCreditoPrestamo') }}" class="box-creditos">
+
+            <div>
+                <h5 class="subtitle-page">
+                    ¿Que cantidad nececitas y qué plazo se ajusta a tus nececidades?
+                </h5>
+            </div>
+
+            <div class="box-number">
+
+                <div class="slider">
+
+                    <div class="box-range">
+                        <input type="range" id="slider" min="3000" max="100000" value="3000" step="1" oninput="updateRangeColor()" />
+                    </div>
+
+                    <div class="box-min-max">
+
+                        <div>Min. 3.000€</div>
+
+                        <div>Max. 100.000€</div>
+                    </div>
+                </div>
+
+                <div class="input-number">
+
+                    <div>
+                        <input type="number" name="valor_prestamo" id="propertyValue" value="3000" min="0" max='100000' oninput="validity.valid||(value='');" />
+                    </div>
+
+                    <div>€</div>
+                </div>
+            </div>
+
+            <div class="box-number">
+
+                <div class="slider">
+
+                    <div>
+                        <input type="range" id="slider-month" min="24" max="96" value="24" step="1" oninput="updateRangeColorMonth()" />
+                    </div>
+
+                    <div class="box-min-max">
+
+                        <div>Min. 24 Meses</div>
+
+                        <div>Max. 96 Meses</div>
+                    </div>
+                </div>
+
+                <div class="input-number">
+
+                    <div>
+                        <input name="valor_meses" type="number" id="propertyValueMonth" value="24" step="1" min="24" max="96" />
+                    </div>
+
+                    <div>Meses</div>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" id="submitBtn">Siguiente</button>
+            </div>
+        </form>
+    </div>
+    <!-- Barra de progreso -->
+    {% include "_steps.html" %}
+</div>
+
+{% endblock %}
+</div>

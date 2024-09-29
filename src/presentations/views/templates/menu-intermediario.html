@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% block head %}
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/menu-creditos.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/elemento-propuesta.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+{% block content %}
+
+<div class="container-choose-register" style="position: relative">
+
+    <div class="container mb-4">
+        <br><br>
+        <!-- Mensajes de alerta al utilizar flash -->
+        {% if get_flashed_messages(with_categories=true) %}
+
+        <div class="alert-container">
+            {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+            <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Título registro -->
+
+        <div class="text-center mb-4 title-page">
+            <h1>Clientes que solicitan un crédito</h1>
+        </div>
+
+        <div class="text-center second-text">
+            <text>Aquí hay una lista de clientes que no han aceptado una propuesta aun. ¡Puedes enviarles una propuesta!</text>
+        </div>
+
+
+        <div class='box-filt-prop'>
+
+            <!-- Barra de filtro -->
+
+            <div class="d-flex justify-content-center mb-4">
+
+                <form method="get" action="{{ url_for('propuestas.MenuIntermediario') }}" class="form-inline">
+
+                    <div class="form-group">
+
+                        <label for="filtro_servicio" class="mr-2">Filtrar por:</label>
+                        <select class="form-control form-control-sm input-options" name="filtro_servicio" id="filtro_servicio">
+                            <option value="">Todos los servicios</option>
+                            {% for servicio in lst_servicios %}
+                            <option value="{{ servicio.name }}" {% if filtro_servicio == servicio.name %}selected{% endif %}>
+                                {{ servicio.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class='box-filtrar'>
+
+                        <button type="submit" class="button-filtrar">Filtrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Botón para crear un nuevo crédito -->
+
+            <div class="text-center box-nueva-propuesta">
+
+                <div class='button-nueva-propuesta'>
+                    <a id="ver_global_cred_sin_propuestas" onclick="CargarCreditosSinPropuesta()" data-bs-toggle="modal" data-bs-target="#PopupGlobalPropuestas">Enviar una nueva propuesta</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Tabla de estado del crédito -->
+
+        <table class="table container-table">
+            <thead>
+
+                <tr>
+
+                    <th scope="col">Servicio que solicitan</th>
+
+                    <th scope="col">ID Cliente</th>
+
+                    <th scope="col">Situación laboral</th>
+
+                    <th scope="col">Valor del crédito solicitado</th>
+
+                    <th scope="col">Años a devolver</th>
+
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertan los créditos -->
+                {% if lista_cred != None %}
+                {% for credito in lista_cred %}
+
+                <tr>
+
+                    <td class="status-confirmed">{{ credito.opción_financiera.value }}</td>
+
+                    <td>{{ credito.cliente_id }}</td>
+
+                    <td>{{ credito.situación_laboral.value }}</td>
+
+                    <td>{{ credito.valor_crédito }} Eur</td>
+
+                    <td>{{ credito.años_devolver }}</td>
+
+                    <td class="actions">
+
+                        <div class='item-actions'>
+                            <a id="ver_propuestas" onclick="VerPropuestas( {{credito.id}} )" class="ver_prop" data-bs-toggle="modal" data-bs-target="#PopupPropuestas">Ver propuestas</a>
+                        </div>
+
+                        <div class='item-actions'>
+                            <a href="#" class="" data-bs-toggle="modal" data-bs-target="#itemModal" onclick="MasInfoCréditoICI({{ credito.id }})">Más Detalles</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+
+        <!-- Popup al hacer click a más detalles de un crédito -->
+
+        <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel">Detalles del Crédito</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+
+                    <div class="modal-body">
+                        <h5 id="itemName"></h5>
+
+                        <p id="itemDescription"></p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup lista global de créditos sin propuestas -->
+
+        <div class="modal fade" id="PopupGlobalPropuestas" tabindex="-1" aria-labelledby="PopupGlobalPropuestasLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupGlobalPropuestasLabel">Solicitud de créditos sin propuestas</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="ContenidoPopupGlobalPropuestas">Cargando...</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de propuestas -->
+
+        <div class="modal fade" id="PopupPropuestas" tabindex="-1" aria-labelledby="PopupPropuestasLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-xl">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupPropuestasLabel">Propuestas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body" style="max-height: 80vh; overflow-y: auto;"> <!-- Cuerpo desplazable -->
+
+                        <div id="ContenidoPopupPropuestas">
+
+                            <div class="container mt-4">
+
+                                <div id="contenedor_propuestas" class="row">
+                                    Cargando...
+                                    <!-- Aquí Iran las propuestas-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de avalista -->
+
+        <div class="modal fade" id="PopupAvalista" tabindex="-1" aria-labelledby="PopupAvalistaLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-scrollable">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupAvalistaLabell">Avalistas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div id='contenedor_avalista' class="modal-body">
+
+                        <p id="contenidoPopup">Cargando...</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de confirmación al eliminar -->
+
+        <div class="modal fade" id="ConfirmElimCred" tabindex="-1" aria-labelledby="ConfirmElimCredLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ConfirmElimCredLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        ¿Estás seguro de que quieres eliminar este crédito?
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button onclick="location.href = '/credito/eliminar/'" type="button" class="btn btn-danger" id="btn_confirmar_eliminar">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br>
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/menu-propuestas.js') }}"></script>
+{% endblock %}

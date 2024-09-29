@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', path='css/auth.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', path='css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-form-client" style="position: relative;">
+    <!-- Mensajes de alerta al utilizar flash -->
+    {% if messages %}
+
+    <div class="alert-container">
+        {% for category, message in messages %}
+
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Título Login -->
+
+    <div class="text-center mb-4">
+        <h1>{{ titulo }}</h1>
+    </div>
+
+    <!-- Formulario Login -->
+
+    <div class="container-form">
+
+        <form method="POST" action="{{ action_url }}" class="form-login">
+
+            <div class="form-group">
+
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control {{ 'is-invalid' if errors.username else '' }}" value="{{ form_data.username }}">
+                {% if errors.username %}
+
+                <div class="invalid-feedback feedback-invalido">
+
+                    <ul>
+                        {% for error in errors.username %}
+
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+
+            <div class="form-group">
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control {{ 'is-invalid' if errors.password else '' }}" value="{{ form_data.password }}">
+                {% if errors.password %}
+
+                <div class="invalid-feedback feedback-invalido">
+
+                    <ul>
+                        {% for error in errors.password %}
+
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+
+            <div class='box-button-login'>
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </div>
+        </form>
+        <a class="link-login" href="{{ register_url }}">¿No tienes cuenta? ¡Regístrate!</a>
+        <br>
+        <a class="link-login" href="{{ forgot_password_url }}">¿Te has olvidado de tu contraseña?</a>
+    </div>
+</div>
+
+
+{% endblock %}

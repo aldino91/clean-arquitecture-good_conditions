@@ -1,0 +1,27 @@
+
+
+<!-- _steps.html -->
+
+<div class="container mt-5">
+    <div class="row">
+         <div class="col">
+             <ul class="stepper stepper-vertical">
+                 {% for step in steps %}
+                 <li>
+                     <div class="{% if loop.index <= current_step %}step active{% else %}step{% endif %}">
+                         <div class="circle">
+                             {% if loop.index <= current_step %}<div class="circle-check">
+                         </div>{% else %}{% endif %}
+ 
+                     </div>
+                     <div class="label">{{ step }}</div>
+                 </li>
+                 {% if loop.last %} {% else %} {% if loop.index <= current_step %}<div class="line-next-step">
+         </div>
+         {% else %}<div class="line-next-step-no-check"></div>{% endif %}
+         {% endif %}
+ 
+         {% endfor %}
+        </ul>
+    </div>
+</div>

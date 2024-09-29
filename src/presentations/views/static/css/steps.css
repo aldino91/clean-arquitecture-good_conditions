@@ -1,0 +1,131 @@
+.stepper-vertical {
+  position: absolute;
+  right: 150px;
+  top: 100px;
+  width: 200px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin: auto;
+}
+
+.stepper-vertical .step {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
+li {
+  line-height: 0 !important;
+}
+
+.stepper-vertical .step .circle {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 2px solid #6c757d;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.stepper-vertical .step.active .circle {
+  border-color: var(--bs-dark);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-vertical .step.active .circle .circle-check {
+  width: 8px;
+  height: 8px;
+  background-color: var(--bs-dark);
+  border-radius: 100%;
+}
+
+.stepper-vertical .step .label {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.stepper-vertical .step.active .label {
+  color: var(--bs-dark);
+}
+
+.stepper-vertical .step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: calc(100% + 10px);
+  height: 2px;
+  width: calc(100% - 20px);
+  background-color: #e9ecef;
+}
+
+.stepper-vertical .step.active+.step .step::after {
+  background-color: var(--bs-dark);
+}
+
+.line-next-step {
+  border-left: var(--bs-dark) 2px solid;
+  margin-left: 8.9px;
+  height: 100%;
+  width: 20px;
+}
+
+.line-next-step-no-check {
+  border-left: #6c757d 2px solid;
+  margin-left: 8.9px;
+  height: 100%;
+  width: 20px;
+}
+
+
+/* Barra de progresso */
+.box-progress {
+
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.progress {
+  width: 100%;
+}
+
+.progress-bar {
+  background-color: var(--bs-progress);
+}
+
+
+
+/* Media Query */
+
+
+@media (min-width: 360px) and (max-width: 899px) {
+  .stepper-vertical {
+    display: none;
+  }
+
+  li {
+    line-height: 0.9 !important;
+  }
+
+}
+
+@media (min-width: 899px) {
+
+  .box-progress {
+    display: none;
+  }
+
+}

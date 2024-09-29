@@ -1,0 +1,35 @@
+h1,
+h5 {
+    color: var(--bs-dark);
+}
+
+.box-messagge {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 2px var(--bs-dark);
+}
+
+.box-messagge div p {
+    color: #6c757d;
+}
+
+.box-button-sub-doc:hover {
+    width: 70%;
+}
+
+.button-subida-doc {
+    color: var(--bs-dark) !important;
+}
+
+.box-button-sub-doc {
+    color: var(--bs-dark) !important;
+    width: 40%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px var(--bs-dark);
+    transition: width 0.5s ease;
+    margin: auto;
+    font-weight: lighter;
+}

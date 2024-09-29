@@ -1,0 +1,228 @@
+.container-form-client {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+h1 {
+  color: var(--bs-dark);
+}
+
+form div ul li {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+li>input {
+  width: auto;
+}
+
+#opcion_financiera,
+#estado_civil,
+#permisos_residencia,
+#cantidad_hijos,
+#situacion_laboral,
+#pais_residencia,
+#provincia_residencia,
+#regimen {
+  border: none !important;
+  background-color: transparent !important;
+  margin-top: 20px;
+}
+
+li label {
+  display: block !important;
+  text-align: center;
+  margin: auto;
+  width: auto;
+  overflow-wrap: break-word;
+  white-space: normal;
+  color: #014ca1;
+}
+
+form,
+label {
+  color: var(--bs-dark);
+}
+
+input[type="radio"] {
+  accent-color: var(--bs-dark);
+  /* Cambia el color del botón de radio */
+}
+
+input[type="radio"]+label {
+  position: relative;
+  display: inline;
+  cursor: pointer;
+}
+
+input[type="radio"]+label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 2px;
+  background-color: #014ca1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input[type="radio"]:checked+label::after {
+  opacity: 1;
+}
+
+input[type="radio"] {
+  display: none !important;
+}
+
+.button-submit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#submit {
+  width: 50%;
+  margin: auto;
+  background-color: transparent;
+  color: var(--bs-dark);
+  box-shadow: none;
+  border-bottom: solid 2px #014ca1;
+  border-radius: 0px;
+  transition: width 0.5s ease;
+}
+
+#submit:hover {
+  width: 70%;
+}
+
+
+/* #regimen-container {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s 0.8s;
+  height: 0;
+  overflow: hidden;
+}
+
+#regimen-container.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 1.5s ease, transform 1.5s ease, visibility 1.5s;
+  height: auto;
+} */
+
+.error-message {
+  color: #842029;
+}
+
+.box-form {
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+/* Cambios Aldo pop up de estado civil */
+
+.estado_civil {
+  position: relative;
+  width: 100%;
+  height: 230px;
+}
+
+#regimen-container {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s 0.8s;
+  overflow: hidden;
+  width: 40%;
+  height: 0px;
+  background-color: rgb(245, 246, 252);
+  position: absolute;
+  top: 10.4%;
+  right: 0;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#regimen-container label text {
+  text-align: center;
+}
+
+#iconoplay {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  z-index: 2;
+}
+
+#regimen-container.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 1.5s ease, transform 1.5s ease, visibility 1.5s;
+  height: 130px;
+}
+
+#estado_civil li {
+  margin-top: 0px;
+  line-height: 0 !important;
+}
+
+#regimen {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+#regimen li {
+  margin-top: 0px;
+  line-height: 0.8 !important;
+}
+
+/* Cambios Aldo pop up de provincia de residencia */
+
+#provincia_residencia {
+  display: block !important;
+  color: #014ca1 !important;
+  border-radius: 0 !important;
+  background-color: rgb(245, 246, 252) !important;
+  border: none;
+  outline: none !important;
+}
+
+#provincia_residencia:focus,
+#provincia_residencia:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #014ca17a;
+
+}
+
+
+
+
+
+
+/* Media Query */
+
+@media (min-width: 360px) and (max-width: 899px) {
+  .container-form-client {
+    padding-top: 0px;
+  }
+
+}

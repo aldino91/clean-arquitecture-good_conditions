@@ -64,11 +64,16 @@ p {
 
 /* Estilos botones Acceso y hazte usuario header */
 .item-buttons {
-
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.item-buttons>* {
+    flex: 1 1 auto;
+    margin-bottom: 10px;
+}
+
 
 .item-buttons button {
     border: none;
@@ -126,4 +131,8 @@ p {
 .linea-seleccionada {
     width: 100%;
     border-bottom: solid 2px #014ca1;
+}
+
+.base-link-hover:hover {
+    color: #9ac4f5 !important;
 }

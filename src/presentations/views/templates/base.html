@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %} {% endblock %}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="" name="keywords" />
+        <meta content="" name="description" />
+
+        <!-- Conecto con Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- Agrego las hojas de estilo de los iconos -->
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" /> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+        <!-- Hojas de estilo de las bibliotecas -->
+        <link rel="stylesheet" href="{{ url_for('static', path='lib/animate/animate.min.css') }}" />
+        <link href="{{ url_for('static', path='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static', path='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
+
+        <!-- Hoja de estilo personalizada de Bootstrap -->
+        <link href="{{ url_for('static', path='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+        <!-- Hoja de estilo de la plantilla -->
+        <link href="{{ url_for('static', path='css/style.css') }}" rel="stylesheet" />
+
+        <!-- Mis hojas de estilo -->
+        <link href="{{ url_for('static', path='css/base.css') }}" rel="stylesheet" />
+
+        {% block head %} {% endblock %}
+    </head>
+
+    <body>
+        <!-- Muestro el spinner de carga inicial -->
+
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Fin del spinner -->
+
+        <!-- Inicio del Navbar y la sección de héroe -->
+
+        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- Logo GoodConditions -->
+                    <a href="#" class="navbar-brand p-0">
+                        <h1 class="text-primary mb-0">GoodConditions</h1>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+
+                    <div class="box-nav" id="navbarCollapse">
+
+
+                        <div class="item-nav dropdown nav-item">
+
+                            <div>
+                                <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                                    <span class="dropdown-toggle">Servicios</span>
+                                </a>
+
+                            </div>
+
+                            <div class='linea-nav'></div>
+
+                            <div class="dropdown-menu">
+                                <a href="{{ url_for('static', path='feature.html') }}" class="dropdown-item">Nueva hipoteca</a>
+                                <a href="{{ url_for('static', path='team.html') }}" class="dropdown-item">Mejora tu Hipoteca</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Mejores Hipotecas Fijas 2024</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Hipoteca autónomos</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Prestamos personales</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Hipoteca funcionarios</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Reunificación de deudas</a>
+                            </div>
+                        </div>
+
+                        <div class="item-nav">
+
+                            <div>
+
+                                <a href="{{ url_for('static', path='service.html') }}" class="nav-item nav-link">Cómo funciona</a>
+                            </div>
+
+                            <div class='linea-nav'></div>
+                        </div>
+
+                        <div class="item-nav">
+
+                            <div>
+
+                                <a href="{{ url_for('static', path='blog.html') }}" class="nav-item nav-link">Nosotros</a>
+                            </div>
+
+                            <div class='linea-nav'></div>
+                        </div>
+
+                        <div class="item-nav dropdown nav-item">
+
+                            <div>
+                                <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                                    <span class="dropdown-toggle">Calculadoras</span>
+                                </a>
+                            </div>
+
+                            <div class='linea-nav'></div>
+
+                            <div class="dropdown-menu">
+                                <a href="{{ url_for('static', path='feature.html') }}" class="dropdown-item">¿Cuánto podría llegar a solicitar?</a>
+                                <a href="{{ url_for('static', path='team.html') }}" class="dropdown-item">Calcula la cuota de tu hipoteca</a>
+                                <a href="{{ url_for('static', path='testimonial.html') }}" class="dropdown-item">Preguntas frecuentes</a>
+                            </div>
+                        </div>
+
+                        <div class="item-nav">
+
+                            <div>
+
+                                <a href="{{ url_for('static', path='contact.html') }}" class="nav-link">Contacto</a>
+                            </div>
+
+                            <div class='linea-nav'></div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="div-login-header">
+
+                        <div class="d-none d-xl-flex flex-shrink-0 ps-4 item-buttons div-botones-login-registro">
+                            <button id="boton_login" onclick="window.location.href='/auth/login-cliente'">
+                                <i class="fa fa-user"></i>
+                                Acceso
+                            </button>
+
+                            <button id="boton_registro" onclick="window.location.href='/auth/registrar-cliente'">
+                                Hazte cliente
+                            </button>
+                        </div>
+
+                        <div class="selector-login">
+
+                            <div class="item-nav">
+
+                                <div>
+                                    <a opcion="cliente" onclick="SeleccionarClienteICI(this)" class="nav-item nav-link opcion-menu">Clientes</a>
+                                </div>
+
+                                <div class='linea-seleccionada'></div>
+                            </div>
+
+                            <div class="item-nav">
+
+                                <div>
+                                    <a opcion="ici" onclick="SeleccionarClienteICI(this)" class="nav-item nav-link opcion-menu">Intermediarios</a>
+                                </div>
+
+                                <div class='linea-nav'></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Fin del Navbar y la sección de héroe -->
+
+        {% block content %} {% endblock %}
+
+        <!-- Inicio del pie de página -->
+
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+
+            <div class="container py-5">
+
+                <div class="row g-5">
+
+                    <div class="col-xl-9">
+
+                        <div class="mb-5">
+
+                            <div class="row g-4">
+
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <h4 class="text-white mb-4">Conócenos</h4>
+                                    <a class="btn btn-link d-block text-start base-link-hover" href="#">> Blog</a>
+                                    <a class="btn btn-link d-block text-start base-link-hover" href="#">> Nuestra empresa</a>
+                                    <a class="btn btn-link text-start base-link-hover" href="#">> Mapa web</a>
+                                </div>
+
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <h4 class="text-white mb-4">Contáctenos</h4>
+
+                                    <p class="text-white-50 mb-2">
+                                        <i class="fa fa-map-marker-alt me-3"></i>
+                                        En toda España
+                                    </p>
+
+                                    <p class="text-white-50 mb-2">
+                                        <i class="fa fa-phone-alt me-3"></i>+34 637156785
+                                    </p>
+
+                                    <p class="text-white-50 mb-2">
+                                        <i class="fa fa-envelope me-3"></i>soporte@goodconditions.com
+                                    </p>
+
+                                    <div class="d-flex pt-3">
+                                        <a class="btn btn-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-square btn-primary me-2" href="https://www.facebook.com/creditosyprestamosmallorca/"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-square btn-primary" href="https://es.linkedin.com/company/creditosyprestamosmallorca"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <h4 class="text-white mb-4">Links útiles</h4>
+                                    <a class="btn btn-link base-link-hover" href="#">> Contacto</a>
+                                    <a class="btn btn-link base-link-hover" href="#">> Como funciona</a>
+                                    <a class="btn btn-link base-link-hover" href="">> Panel ICI</a>
+                                    <a class="btn btn-link base-link-hover" href="">> Nueva hipoteca</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3">
+
+                        <div class="mb-5">
+                            <h4 class="text-white mb-4">Suscríbete a nuestro Newsletter</h4>
+
+                            <p class="text-white-50">
+                                Al suscribirte a nuestro newsletter, aceptas recibir
+                                información, promociones y noticias de nuestra parte. Recuerda
+                                que puedes darte de baja en cualquier momento haciendo clic en
+                                el botón "Darse de baja".
+                            </p>
+
+                            <div class="position-relative mx-auto" style="max-width: 400px">
+                                <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu email" />
+                                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
+                                    Suscribirse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="copyright text-center text-white border-top border-secondary pt-4">
+
+                    <div class="row">
+
+                        <div class="col-md-6 text-center text-md-start">
+
+                            <p class="mb-md-0">
+                                &copy;<a href="https://goodconditions.com" class="base-link-hover"> GoodConditions</a>
+                                Todos los derechos reservados
+                            </p>
+                        </div>
+
+                        <div class="col-md-6 text-center text-md-end">
+
+                            <p class="mb-0">
+                                Desarrollado por
+                                <a class="base-link-hover" href="https://gasparaguilo.com/">Gaspar Aguiló Serveis informàtics</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin del pie de página -->
+
+        <!-- Botón para volver arriba -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+            <i class="bi bi-arrow-up"></i>
+        </a>
+
+        <!-- Librerías JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url_for('static', path='lib/wow/wow.min.js') }}"></script>
+        <script src="{{ url_for('static', path='lib/easing/easing.min.js') }}"></script>
+        <script src="{{ url_for('static', path='lib/waypoints/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', path='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', path='lib/lightbox/js/lightbox.min.js') }}"></script>
+
+        <!-- JavaScript de la plantilla -->
+        <script src="{{ url_for('static', path='js/main.js') }}"></script>
+
+        <!-- Javascript del header mio -->
+        <script src="{{ url_for('static', path='js/selector-login.js') }}"></script>
+    </body>
+
+</html>

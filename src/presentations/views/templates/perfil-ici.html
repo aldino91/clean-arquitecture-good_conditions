@@ -1,0 +1,309 @@
+{% extends 'base.html' %} {% block head %}
+<link href="{{ url_for('static', filename='css/perfil-ici.css') }}" rel="stylesheet" />
+{% endblock %} {% block content %}
+
+<div class="container-body">
+    <br><br>
+    <!-- Mensajes de alerta al utilizar flash -->
+    {% if get_flashed_messages(with_categories=true) %}
+
+    <div class="alert-container">
+        {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+        <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+            {{ mensaje }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div>
+        <h1>{{ titulo }}</h1>
+    </div>
+
+    <div class='container-all-items'>
+
+        <div class='container-all-img'>
+
+            {% if imgPerfil.ruta is none %}
+
+            <div class='container-img-perfil'>
+
+                <div class='box-title-img-propuestas'>
+                    <text>Imagen de perfil</text>
+                </div>
+
+                <div class='' data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Aconsejamos que la imagen sea de 200px-50px">
+
+                    <div class=''>
+                        <img src="../static/img/avatar_default.jpg" alt="Imagen perfil ici" width="90px" height="90px" class='img-perfil'>
+                    </div>
+                </div>
+
+                <form method="POST" class='form-subida-foto' action="{{ url_for('documentos.SubidaImgPerfil') }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    {{ form.foto(class="form-control" + (' is-invalid' if form.foto.errors else '')) }}
+                    {% if form.foto.errors %}
+                    {% for error in form.foto.errors %}
+
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {{ form.submit() }}
+                </form>
+            </div>
+
+            {% endif %}
+
+            {% if imgPerfil.ruta is not none %}
+
+            <div class='container-img-perfil'>
+
+                <div class='box-title-img-propuestas'>
+                    <text>Imagen de perfil</text>
+                </div>
+
+                <div class='' data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Aconsejamos que la imagen sea de 200px-50px">
+
+                    <div class=''>
+                        <img src="../static/img/{{ici.id}}/perfil/{{imgPerfil.ruta}}" alt="Imagen perfil ici" width="90px" height="90px" class='img-perfil'>
+                    </div>
+
+                </div>
+
+                <form method="POST" class='form-subida-foto' action="{{ url_for('documentos.UpdateImagenPerfil') }}" enctype="multipart/form-data">
+                    {{ updateImg.hidden_tag() }}
+
+                    {{ updateImg.foto(class="form-control" + (' is-invalid' if updateImg.foto.errors else '')) }}
+                    {% if updateImg.foto.errors %}
+                    {% for error in updateImg.foto.errors %}
+
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {{ updateImg.submit() }}
+                </form>
+            </div>
+            {% endif %}
+
+            {% if imgPropuesta.ruta is none %}
+
+            <div class='container-img-propuesta'>
+
+                <div class='box-title-img-propuestas'>
+                    <text>Imagen visible en las propuestas</text>
+                </div>
+
+                <div class='' data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Aconsejamos que la imagen sea de 200px-50px">
+
+                    <div class=''>
+                        <img src="../static/img/img_default_propuesta.jpg" alt="Foto del propuesta" style="width: 100%; height: 90px;">
+                    </div>
+                </div>
+
+                <form method="POST" class='form-subida-foto' action="{{ url_for('documentos.SubidaImgPropuesta') }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    {{ form.foto(class="form-control" + (' is-invalid' if form.foto.errors else '')) }}
+                    {% if form.foto.errors %}
+                    {% for error in form.foto.errors %}
+
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {{ form.submit() }}
+                </form>
+            </div>
+
+            {% endif %}
+
+            {% if imgPropuesta.ruta is not none %}
+
+            <div class='container-img-propuesta'>
+
+                <div class='box-title-img-propuestas'>
+                    <text>Imagen visible en las propuestas</text>
+                </div>
+
+                <div class='box-img-propuestas' data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Aconsejamos que la imagen sea de 200px-50px">
+
+                    <div>
+                        <img class='img-propuestas' src="../static/img/{{ici.id}}/propuesta/{{imgPropuesta.ruta}}" alt="Foto del propuesta" style="width: 100%; height: 90px;">
+                    </div>
+
+                </div>
+
+                <form method="POST" class='form-subida-foto' action="{{ url_for('documentos.UpdateImagenPropuesta') }}" enctype="multipart/form-data">
+                    {{ updateImg.hidden_tag() }}
+
+                    {{ updateImg.foto(class="form-control" + (' is-invalid' if updateImg.foto.errors else '')) }}
+                    {% if updateImg.foto.errors %}
+                    {% for error in updateImg.foto.errors %}
+
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {{ updateImg.submit() }}
+                </form>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class='container-datos'>
+
+            <div class='container-all-info'>
+
+                <div class='info-ici'>
+
+                    {% for name, value in ici.items() %}
+                    {% if name != 'id' %}
+
+                    <div class='box-info-ici'>
+
+                        <div class='datos-name'>
+                            {{ name }}:
+                        </div>
+
+                        <div class='datos-value'>
+                            <text> {{ value }}</text>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class='datos-generales-ici'>
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa fa-university fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Hipotecas
+                    </div>
+
+                    <div>
+                        <text>{{ hipotecas|length if hipotecas|length > 0 else 0 }}</text>
+                    </div>
+                </div>
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa-solid fa-car-on fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Prestamos
+                    </div>
+
+                    <div>
+                        <text>{{ prestamos|length if prestamos|length > 0 else 0 }}</text>
+                    </div>
+                </div>
+
+                <div class='box-icon-info'>
+
+
+                    <div>
+                        <i class="fa-solid fa-landmark-dome fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Mejora de hipoteca
+                    </div>
+
+                    <div>
+                        <text>{{ mejora_hipoteca|length if mejora_hipoteca|length > 0 else 0 }}</text>
+                    </div>
+                </div>
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa-solid fa-code-compare fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Reunificación de hipoteca
+                    </div>
+
+                    <div>
+                        <text>{{ reunificacion|length if reunificacion|length > 0 else 0 }}</text>
+                    </div>
+                </div>
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa-solid fa-circle-dollar-to-slot fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Financiación autónomos
+                    </div>
+
+                    <div>
+                        <text>{{ financiacion|length if financiacion|length > 0 else 0 }}</text>
+                    </div>
+                </div>
+
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa-solid fa-file-circle-plus fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Propuestas Hechas
+                    </div>
+
+                    <div>
+                        <text>{{total}}</text>
+                    </div>
+                </div>
+
+                <div class='box-icon-info'>
+
+                    <div>
+                        <i class="fa-solid fa-handshake fa-2x"></i>
+                    </div>
+
+                    <div>
+                        Propuestas aceptadas
+                    </div>
+
+                    <div>
+                        <text>{{propuestas_aceptadas}}</text>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+<script src="{{ url_for('static', filename='js/perfil-ici.js') }}"></script>
+{% endblock %}

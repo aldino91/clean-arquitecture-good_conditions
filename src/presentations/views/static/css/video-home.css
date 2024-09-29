@@ -1,0 +1,63 @@
+/* Estilo del contenedor del video con sombra y manejo de desbordamiento */
+.video-container {
+    position: relative;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Estilo personalizado para el video con borde y sombra */
+.custom-video {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    display: block;
+}
+
+/* Estilo para los controles del video con fondo semitransparente y sombra */
+.video-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del botón de play/pause */
+#playPause {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo del icono del botón de play/pause */
+#playPauseIcon {
+    font-size: 20px;
+    color: #fff;
+}
+
+/* Estilo de la barra de progreso personalizada del video */
+.custom-progress {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    accent-color: #007bff;
+}
+
+/* Tamaño de fuente para el texto debajo del video */
+.lead.fs-4 {
+    font-size: 1.25rem;
+}
+
+/* Estilo para la imagen centrada debajo del video */
+.text-center img {
+    max-width: 100%;
+    height: auto;
+}

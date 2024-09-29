@@ -1,0 +1,273 @@
+/* Title aldo*/
+h1,
+h5 {
+    color: var(--bs-dark) !important;
+}
+
+/* Container*/
+.container-credito {
+    width: 50%;
+    margin: auto;
+}
+
+/* boton subida documentos aldo*/
+.box-button-sub-doc {
+    width: 40%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px var(--bs-dark);
+    transition: width 0.5s ease;
+    margin: auto;
+    font-weight: lighter;
+}
+
+.box-button-sub-doc:hover {
+    width: 80%;
+}
+
+.box-button-sub-doc a:hover {
+    color: var(--bs-dark) !important;
+}
+
+.button-subida-doc {
+    border: none;
+    color: var(--bs-dark);
+}
+
+/* Estilo tablas aldo */
+
+.table th {
+    color: var(--bs-dark) !important;
+}
+
+thead {
+    background-color: #f0f0f0;
+}
+
+/* Estilo general para la tabla */
+.table {
+    width: 100%;
+    max-width: 1200px;
+    /* Ajusta este valor según el diseño deseado */
+    margin: 0 auto;
+    /* Centra la tabla horizontalmente */
+}
+
+.table th,
+.table td {
+    border: none;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+    /* Centrar verticalmente */
+}
+
+/* Estilo para los enlaces de acción */
+.eliminar_cred,
+.btn-info {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.eliminar_doc {
+    color: #a82a37;
+    cursor: pointer;
+}
+
+.eliminar_doc:hover {
+    color: #a82a37;
+}
+
+.ver-archivos {
+    color: var(--bs-dark) !important;
+}
+
+.eliminar_cred {
+    color: #a82a37;
+}
+
+.eliminar_cred:hover {
+    text-decoration: underline;
+}
+
+/* .btn-info {
+    background-color: #17a2b8;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+} */
+
+/* Estilo para la imagen del perfil */
+.img-profile {
+    border-radius: 50%;
+    /* Redondear la imagen */
+    width: 60px;
+    /* Ancho fijo */
+    height: 60px;
+    /* Alto fijo */
+    object-fit: cover;
+    /* Asegura que la imagen se ajuste sin distorsión */
+    max-width: 100%;
+    /* Asegura que la imagen no sea más ancha que su contenedor */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
+}
+
+/* Estilo para los estados del crédito */
+.status-confirmed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #c82333;
+}
+
+.status-in-progress {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Estilo adicional para el texto centrado */
+.text-center.mb-4.title-page {
+    text-align: center;
+}
+
+/* Estilo adicional para la tabla en contenedores fluidos */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*Estilos para popup mas detalles:*/
+.item-description {
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+}
+
+/* Estilos del modal aldo */
+.button-footer {
+    width: 40%;
+    color: var(--bs-dark) !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 2px var(--bs-dark);
+    background-color: transparent;
+    margin: auto;
+    font-weight: bold;
+    transition: width 0.5s ease;
+}
+
+.button-footer:hover {
+    width: 70%;
+}
+
+/* Boton eliminar */
+.button-eliminar {
+    width: 40%;
+    color: var(--bs-dark);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 2px var(--bs-dark);
+    background-color: transparent;
+    margin: auto;
+    font-weight: bold;
+    transition: width 0.5s ease;
+}
+
+.button-eliminar:hover {
+    width: 70%;
+    color: #a82a37;
+    border-bottom: solid 2px #a82a37;
+}
+
+.container-table {
+    border: solid #f0f0f0 1px;
+    border-radius: 3px;
+    border-collapse: separate;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.item-description p {
+    color: var(--bs-dark);
+}
+
+.modal-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button-cerrar {
+    width: 50%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px var(--bs-dark);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    color: var(--bs-dark);
+    padding: 3px;
+    cursor: pointer;
+    transition: width 0.5s ease;
+}
+
+.button-cerrar:hover {
+    width: 70%;
+
+}
+
+.modal-title {
+
+    font-weight: bold;
+}
+
+
+.lista_avalistas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.lista_avalistas_titulo {
+    width: 50%;
+    color: var(--bs-dark);
+    font-weight: bolder;
+}
+
+.lista_avalistas_select {
+    width: 50%;
+    background-color: rgb(245, 246, 252);
+    border: none;
+    color: var(--bs-dark);
+    padding: 5px;
+}
+
+/* Estilo para las opciones al hacer hover */
+.lista_avalistas_select option:hover,
+.lista_avalistas_select option:focus {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.contenedor-datos-avalista {
+    background-color: rgb(245, 246, 252);
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

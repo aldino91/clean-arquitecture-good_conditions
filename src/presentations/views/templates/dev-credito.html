@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block head %}
+<link href="{{ url_for('static', filename='css/auth.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/devCredito.css') }}" rel="stylesheet" />
+
+{% endblock %} {% block content %}
+
+<div class="container-form-client" style="position: relative">
+    <div>
+        <h1>¿A cuántos años desea devolver el crédito?</h1>
+    </div>
+    <form>
+        <div class="form-años-dev">
+            <div>
+                <label for="años">Años</label>
+            </div>
+            <div>
+                <input type="number" id="años" name="años" required />
+            </div>
+        </div>
+        <div class="form-años-dev">
+            <div>
+                <label for="comunidad">Comunidad de la propriedad</label>
+            </div>
+            <div>
+                <input type="text" id="comunidad" name="comunidad" required />
+            </div>
+        </div>
+        <div class="form-años-dev">
+            <div>
+                <label for="provincia">Provincia</label>
+            </div>
+            <div>
+                <input type="text" id="provincia" name="provincia" required />
+            </div>
+        </div>
+        <div class="form-años-dev">
+            <div>
+                <label for="dirección">Dirección</label>
+            </div>
+            <div>
+                <input type="text" id="dirección" name="dirección" required />
+            </div>
+        </div>
+    </form>
+
+    {% include '_steps.html' %}
+</div>
+{% endblock %}

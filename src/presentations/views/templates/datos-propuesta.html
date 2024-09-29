@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/auth.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/registro-cliente.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/datos-propuestas.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-form-client" style="position: relative;">
+    <!-- Mensajes de alerta al utilizar flash -->
+    {% if get_flashed_messages(with_categories=true) %}
+
+    <div class="alert-container">
+        {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+        <div class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+            {{ mensaje }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Título pagina propuesta -->
+
+    <div class="text-center mb-4">
+        <h1>Propuesta de crédito para solicitud con ID: {{ credito_id }}</h1>
+    </div>
+
+    <!-- Formulario de propuesta -->
+
+    <div class='form'>
+
+        <form method="POST" action="{{ url_for('propuestas.PostCrearPropuesta', credito_id=credito_id) }}">
+            {% for field in form %}
+            {% if field.type != "SubmitField" %}
+
+            <div class="form-group">
+                {% if field.id != "csrf_token" %}
+
+                <label for="{{ field.id }}">{{ field.label }}</label>
+                {% endif %}
+                {{ field(class="form-control" + (' is-invalid' if field.errors else '')) }}
+                {% if field.errors %}
+
+                <div class="invalid-feedback feedback-invalido">
+
+                    <ul>
+                        {% for error in field.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            {% endif %}
+            {% endfor %}
+
+            <div class="container-submit">
+                {{ form.submit() }}
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

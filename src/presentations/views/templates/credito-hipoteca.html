@@ -1,0 +1,244 @@
+{% extends 'base.html' %} {% block head %}
+<link href="{{ url_for('static', filename='css/credito-hipoteca.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<script src="{{ url_for('static', filename='js/credito-hipoteca.js') }}"></script>
+
+{% endblock %} {% block content %}
+
+<div class="container-choose-register" style="position: relative">
+
+    <div class="container-credito">
+        <br><br>
+        <!-- Mensajes de alerta al utilizar flash -->
+        {% if get_flashed_messages(with_categories=true) %}
+
+        <div class="alert-container">
+            {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+            <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Barra de progresso -->
+
+        <div class='box-progress'>
+
+            <div class="progress">
+
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+            </div>
+        </div>
+
+        <!-- Título registro -->
+
+        <div style='margin-top: 15px; margin-bottom: 10px;'>
+            <h1>¿Cual es el valor del crédito que deseas socilicitar?</h1>
+        </div>
+
+        <div>
+
+            <div class="box-second-text">
+                <text class="second-text">Mover la rueda o selecciona el valor de la priopiedad para iniciar. A
+                    partir de ese valor, te proporcionamos los montos mínimos. ¿Prefieres
+                    no seguir el mínimo?
+                </text>
+            </div>
+        </div>
+        <!-- Formulario -->
+
+        <form method="post" action="{{ url_for('credito_bp.PostCreditoHipoteca') }}" class="container-form-credito">
+
+            <div class="container-propiedad">
+
+                <div class="box-propiedad">
+
+                    <div>
+                        <text>Valor de la propiedad</text>
+                    </div>
+
+                    <div class="box-number">
+
+                        <div>
+
+                            <!-- <input type="number" name="valor_crédito" id="propertyValue" value="28000" step="1000" min="0" max="1000000" oninput="validity.valid||(value='');" /> -->
+                            <input type="number" name="valor_crédito" id="propertyValue" value="28000" step="1000" min="0" max="1000000" />
+                        </div>
+
+                        <div>
+
+                            €
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slider">
+                    <input type="range" id="slider" min="0" max="900000" value="28000" step="1" oninput="updateRangeColor()" />
+                </div>
+            </div>
+
+            <div class="container-ahorro-aportado">
+
+                <div class="box-ahorro">
+
+                    <div>
+                        <text>Ahorro aportado</text>
+                    </div>
+
+                    <div class="box-number">
+
+                        <div>
+
+                            <input type="number" name="valor_ahorro" id="valueAhorro" value="0" step="1" min="0" max="1000000" />
+                        </div>
+
+                        <div>
+
+                            €
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slider">
+                    <input type="range" id="slider-ahorro" min="0" max="100000" value="0" step="1" oninput="updateRangeColorAhorro()" />
+                </div>
+            </div>
+
+            <div class="container-años">
+
+                <div class="box-años">
+
+                    <div>
+                        <text>Plazo en años</text>
+                    </div>
+
+                    <div class="box-number">
+
+                        <div>
+
+                            <input type="number" name="valor_años" id="valueAños" value="0" step="1" min="0" max="40" />
+                        </div>
+
+                        <div>
+
+                            Años
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slider">
+                    <input type="range" id="slider-años" min="2" max="40" value="2" step="1" oninput="updateRangeColorAhorro()" />
+                </div>
+            </div>
+
+            <div class="container-inmueble">
+
+                <div>
+
+                    <label>Estado del Inmueble</label>
+                </div>
+
+                <div class="checkbox-group">
+
+                    <div>
+
+                        <input type="radio" id="nuevo" name="estadoInmueble" value="nuevo">
+
+                        <label for="nuevo">Nuevo</label>
+                    </div>
+
+                    <div>
+
+                        <input type="radio" id="segunda-mano" name="estadoInmueble" value="segunda-mano">
+
+                        <label for="segunda-mano">Segunda Mano</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container-inmueble">
+
+                <div>
+
+                    <label>Tipo de interes</label>
+                </div>
+
+                <div class="checkbox-group">
+
+                    <div>
+
+                        <input type="radio" id="fijo" name="estadoInmueble" value="fijo">
+
+                        <label for="fijo">Fijo</label>
+                    </div>
+
+                    <div>
+
+                        <input type="radio" id="variable" name="estadoInmueble" value="variable">
+
+                        <label for="variable">Variable</label>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="values">
+
+                <div class="box-values">
+
+                    <div class="text-less">
+                        <span>></span>
+                    </div>
+
+                    <div class="text-values">Valor de entrada a la hipoteca</div>
+
+                    <div>
+                        <span id="downPayment">3360</span>
+                        <text>€</text>
+                    </div>
+                </div>
+
+                <div class="box-values">
+
+                    <div class="text-less"><span>></span></div>
+
+                    <div class="text-values">Ahorro a aportar</div>
+
+                    <div><span id="savings">8960</span> <text>€</text></div>
+                </div>
+
+                <div class="box-values">
+
+                    <div class="text-less"><span>></span></div>
+
+                    <div class="text-values">Gastos e impuestos</div>
+
+                    <div><span id="taxes">3360</span> <text>€</text></div>
+                </div>
+
+                <div class="box-values">
+
+                    <div class="text-less"><span>></span></div>
+
+                    <div class="text-values">Importe de la hipoteca</div>
+
+                    <div><span id="mortgageAmount">22400</span> <text>€</text></div>
+                </div>
+            </div>
+            <button type="submit" id="submitBtn">Siguiente</button>
+    </div>
+    <!-- Barra de progreso -->
+    {% include "_steps.html" %}
+</div>
+
+</div>
+{% endblock %}

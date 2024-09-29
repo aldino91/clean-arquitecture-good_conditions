@@ -1,6 +1,23 @@
-class UserUseCases:
-    def __init__(self, user_repository):
-        self.user_repository = user_repository
+from abc import ABC, abstractmethod
 
-    def get_user(self, user_id):
-        return self.user_repository.get_user(user_id)
+
+class UserUseCases(ABC):
+    @abstractmethod
+    def get_user_by_id(self, user_id):
+        pass
+
+    @abstractmethod
+    def get_user_by_email(self, email):
+        pass
+
+    @abstractmethod
+    def create_user(self, user):
+        pass
+
+    @abstractmethod
+    def update_user(self, user):
+        pass
+
+    @abstractmethod
+    def delete_user(self, user_id):
+        pass

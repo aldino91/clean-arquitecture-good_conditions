@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block head %}
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/menu-creditos.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/elemento-propuesta.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+
+<div class="container-choose-register" style="position: relative">
+
+    <div class="container-credito">
+        <br><br>
+        <!-- Mensajes de alerta al utilizar flash -->
+        {% if get_flashed_messages(with_categories=true) %}
+
+        <div class="alert-container">
+            {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+            <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Título registro -->
+
+        <div class="text-center mb-4 title-page">
+            <h1>Mis créditos solicitados</h1>
+        </div>
+
+        <div class="text-center second-text">
+            <text>Aquí encontrarás la información de tus créditos solicitados y aceptados.</text>
+        </div>
+
+        <!-- Botón para crear un nuevo crédito -->
+
+        <div class="text-center mt-4 box-button-sub-doc">
+            <a href="{{ url_for('credito_bp.DatosHipotecas') }}" class="button-subida-doc">Solicitar un nuevo crédito</a>
+        </div>
+        <br><br>
+
+        <!-- Tabla de estado del crédito -->
+
+        <table class="table container-table">
+            <thead>
+
+                <tr>
+
+                    <th scope="col">Nombre del ICI</th>
+
+                    <th scope="col">Estado del Crédito</th>
+
+                    <th scope="col">Servicio Solicitado</th>
+
+                    <th scope="col">Crédito Solicitado</th>
+
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertan los créditos -->
+                {% if lista_cred != None %}
+                {% for credito in lista_cred %}
+
+                <tr>
+
+                    <td>
+
+                        <div class="d-flex align-items-center">
+
+                            <div>
+
+                                <div class="font-weight-bold">Sin asignar</div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="status-confirmed">{{ credito.estado_crédito.value }}</td>
+
+                    <td>{{ credito.opción_financiera.value }}</td>
+
+                    <td>{{ credito.valor_crédito }} Eur</td>
+
+                    <td class="actions">
+                        <a onclick="CambiarHrefConfirmación({{ credito.id }})" id="confirmar_eliminar" class="eliminar_doc" data-bs-toggle="modal" data-bs-target="#ConfirmElimCred">Eliminar</a>
+                        <br>
+                        <a href="#" class="ver-archivos" data-bs-toggle="modal" data-bs-target="#itemModal" onclick="MasInfoCrédito({{ credito.id }})">Más Detalles</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+
+        <!-- Popup al hacer click a más detalles de un crédito -->
+
+        <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel">Detalles del Crédito</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+
+                    <div class="modal-body">
+                        <h5 id="itemName"></h5>
+
+                        <p id="itemDescription"></p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de propuestas -->
+
+        <div class="modal fade" id="PopupPropuestas" tabindex="-1" aria-labelledby="PopupPropuestasLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-xl">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupPropuestasLabel">Propuestas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div id='contenedor_propuestas' class="modal-body">
+
+                        <p id="contenidoPopup">Cargando...</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de avalista -->
+
+        <div class="modal fade" id="PopupAvalista" tabindex="-1" aria-labelledby="PopupAvalistaLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-scrollable">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupAvalistaLabell">Avalistas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div id='contenedor_avalista' class="modal-body">
+
+                        <p id="contenidoPopup">Cargando...</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="button-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de confirmación al eliminar -->
+
+        <div class="modal fade" id="ConfirmElimCred" tabindex="-1" aria-labelledby="ConfirmElimCredLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ConfirmElimCredLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        ¿Estás seguro de que quieres eliminar este crédito?
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button> -->
+                        <button onclick="location.href = '/credito/eliminar/'" type="button" class="button-eliminar" id="btn_confirmar_eliminar">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br>
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/menu-creditos.js') }}"></script>
+{% endblock %}

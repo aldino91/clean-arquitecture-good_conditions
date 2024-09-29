@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block head %}
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/menu-creditos.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+
+<div class="container-choose-register" style="position: relative">
+
+    <div class="container-credito">
+        <br><br>
+        <!-- Mensajes de alerta al utilizar flash -->
+        {% if get_flashed_messages(with_categories=true) %}
+
+        <div class="alert-container">
+            {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+            <div id="alerta" class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Título menu documentos -->
+
+        <div class="text-center mb-4 title-page">
+            <h1>Documentos de {{ servicio }}</h1>
+        </div>
+
+        <div class="text-center second-text">
+            <text>Aquí están todos documentos adjuntados a la solicitud del préstamo hecha dia {{ fecha_subida_cred }}.</text>
+        </div>
+
+        <!-- Botón para crear un nuevo crédito -->
+
+        <div class="text-center mt-4 box-button-sub-doc">
+            <a href="{{ url_for('documentos.SubidaDocumentoCliente', credito_id=id_credito) }}" class="button-subida-doc">Subir documentos para esta solicitud</a>
+        </div>
+        <br><br>
+
+        <!-- Tabla de estado del crédito -->
+
+        <table class="table container-table">
+            <thead>
+
+                <tr>
+                    <th scope="col">Fecha de subida</th>
+
+                    <th scope="col">Tipo de documento</th>
+
+                    <th scope="col">Nombre archivo</th>
+
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertan los créditos -->
+                {% if lista_documentos != None %}
+                {% for documento in lista_documentos %}
+
+                <tr>
+                    <td class="status-confirmed">{{ documento.fecha_subida }}</td>
+
+                    <td>{{ documento.tipo_documento }}</td>
+
+                    <td>{{ documento.nombre_archivo }}</td>
+
+                    <td class="actions">
+                        <a onclick="CambiarHrefConfirmación({{ documento.id }})" id="confirmar_eliminar" class="eliminar_doc" data-bs-toggle="modal" data-bs-target="#ConfirmElimDoc">Eliminar</a>
+                        <a href="#" class="ms-3 flex-shrink-0 ver-archivos" data-bs-toggle="modal" data-bs-target="#PopupDocumento" onclick="VerDocumento({{ documento.id }})">Ver archivo</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+
+        <!-- Popup al hacer click a más detalles de un documento -->
+        <div class="modal fade" id="PopupDocumento" tabindex="-1" aria-labelledby="PopupDocumentoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PopupDocumentoLabel">Detalles del documento</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <h5 id="itemName"></h5>
+                        <iframe id="iframe_documento" src="" width="100%" height="500px" style="border: none;"></iframe>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="item-buttons">
+                            <button id="nueva_pestaña" class="btn btn-secondary" type="button">Abrir en nueva pestaña</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de confirmación al eliminar -->
+
+        <div class="modal fade" id="ConfirmElimDoc" tabindex="-1" aria-labelledby="ConfirmElimDocLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ConfirmElimDocLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        ¿Estás seguro de que quieres eliminar este documento?
+                    </div>
+
+                    <div class="modal-footer">
+                        <button onclick="location.href = '/documentos/eliminar/'" type="button" class="button-eliminar" id="btn_confirmar_eliminar">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br>
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/documentos.js') }}"></script>
+{% endblock %}

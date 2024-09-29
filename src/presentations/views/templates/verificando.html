@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/steps.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/verificado.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-form-client" style="position: relative;">
+    <!-- Mensajes de alerta al utilizar flash -->
+    {% if get_flashed_messages(with_categories=true) %}
+
+    <div class="alert-container m-auto" style="max-width: 500px; width: 100%;">
+        {% for categoria, mensaje in get_flashed_messages(with_categories=true) %}
+
+        <div class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+            {{ mensaje }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Título pagina ultimo paso de registro -->
+
+    <div class="text-center mb-4">
+        <h1>{{ titulo }}</h1>
+    </div>
+
+    <!-- Modal confirmación -->
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <!-- Mensaje de confirmación -->
+
+        <div class="p-4 box-messagge" style="max-width: 500px; width: 100%;">
+
+            <div class="text-center">
+                <h5 class="mb-3">
+                    <i class="{{ clases_icono }}"></i> {{ subtitulo }}
+                </h5>
+
+                <p>{{ mensaje_1 }}</p>
+
+                <p>{{ mensaje_2 }}</p>
+            </div>
+            <br>
+            {% if btn_siguiente != None %}
+                <div class="text-center mt-4 box-button-sub-doc">
+                    <a href="{{ btn_siguiente_url }}" class="button-subida-doc">{{ btn_siguiente }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+
+    <!-- Barra de progreso -->
+    {% include '_steps.html' %}
+</div>
+
+{% endblock %}

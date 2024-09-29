@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', path='css/auth.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', path='css/steps.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', path='css/registro-cliente.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-form-client" style="position: relative;">
+
+
+    <!-- Barra de progresso -->
+
+    <div class='box-progress'>
+
+        <div class="progress">
+
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
+    </div>
+
+    <!-- Título registro -->
+
+    <div class="text-center mb-4">
+        <h1 class="title">Registro cliente</h1>
+    </div>
+
+    <!-- Formulario -->
+
+    <div class="container-form">
+
+        <form class='form-group' action="/submit" method="post">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" maxlength="80" required><br><br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" maxlength="80" required><br><br>
+
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" maxlength="9" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" maxlength="120" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" maxlength="80" required><br><br>
+
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" maxlength="255" required><br><br>
+
+            <label for="calle">Calle:</label>
+            <input type="text" id="calle" name="calle" maxlength="255" required><br><br>
+
+            <div class='container-submit'>
+
+                <div>
+                    <button id='submit' type="submit">Registrate</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-- Barra de progreso -->
+    {% include "_steps.html" %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,705 @@
+{% extends 'base.html' %}
+{% block title %} Comparador de prestamos - GoodConditions | Pagina home {% endblock %}
+
+<!-- Estilo para reproductor de video custom-->
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/video-home.css') }}"> {% endblock %}
+
+{% block content %}
+<!-- Slider inicio -->
+
+<div class="header-carousel owl-carousel">
+
+    <div class="header-carousel-item bg-primary">
+
+        <div class="carousel-caption">
+
+            <div class="container">
+
+                <div class="row g-4 align-items-center">
+
+                    <div class="col-lg-7 animated fadeInLeft">
+
+                        <div class="text-sm-center text-md-start">
+                            <h4 class="text-white text-uppercase fw-bold mb-4">Bienvenido a GoodConditions</h4>
+                            <h1 class="display-1 text-white mb-4">Libera el potencial de tus sueños con nuestros préstamos online</h1>
+
+                            <p class="mb-5 fs-5">Rápido, seguro y sin complicaciones. Tu futuro financiero comienza aquí.
+                            </p>
+
+                            <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
+                                <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Ver video</a>
+                                <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Como funciona</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 animated fadeInRight">
+
+                        <div class="calrousel-img" style="object-fit: cover;">
+                            <img src="{{ url_for('static', path='img/slider-1.png') }}" class="img-fluid w-100" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-carousel-item bg-primary">
+
+        <div class="carousel-caption">
+
+            <div class="container">
+
+                <div class="row gy-4 gy-lg-0 gx-0 gx-lg-5 align-items-center">
+
+                    <div class="col-lg-5 animated fadeInLeft">
+
+                        <div class="calrousel-img">
+                            <img src="{{ url_for('static', path='img/slider-2.png') }}" class="img-fluid w-100" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 animated fadeInRight">
+
+                        <div class="text-sm-center text-md-end">
+                            <h4 class="text-white text-uppercase fw-bold mb-4">Bienvenido a GoodConditions</h4>
+                            <h1 class="display-1 text-white mb-4">La satisfacción del cliente es nuestra máxima prioridad</h1>
+
+                            <p class="mb-5 fs-5">Hoy en día los bancos desconfían, pero no hay porque agobiarse, si acudes a nosotros verás como tus problemas se desvanecen, ya que nosotros trabajamos única y exclusivamente para ti.
+                            </p>
+
+                            <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                                <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Ver video</a>
+                                <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Aprender mas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Slider FIN -->
+
+<!-- Nuestras características inicio -->
+
+<div class="container-fluid feature bg-light py-5">
+
+    <div class="container py-5">
+
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Nuestra filosofía</h4>
+            <h1 class="display-4 mb-4">No somos como los otros comparadores</h1>
+
+            <p class="mb-0">GoodConditions se enorgullece de decir que lo que nos diferencia del resto de comparadores financieros es que nos gustan las personas y sentimos empatía por ellas, por sus problemas económicos, por eso nosotros estamos muy orgullosos de proporcionar un servicio al cliente de alta calidad a unos precios asequibles.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+
+                <div class="feature-item p-4 pt-0 h-100 d-flex flex-column">
+
+                    <div class="feature-icon p-4 mb-4">
+                        <i class="far fa-credit-card fa-3x"></i>
+                    </div>
+                    <h4 class="mb-4">Todas las Tarjetas</h4>
+
+                    <p class="mb-4">Crédito, Débito, Mastercard y Visa...</p>
+
+                    <div class="mt-auto">
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Mas información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+
+                <div class="feature-item p-4 pt-0 h-100 d-flex flex-column">
+
+                    <div class="feature-icon p-4 mb-4">
+                        <i class="fa fa-headphones fa-3x"></i>
+                    </div>
+                    <h4 class="mb-4">Tienes preguntas</h4>
+
+                    <p class="mb-4">Atendemos tus preguntas en 48 hs
+                        <br><br> <!-- Línea adicional para la altura -->
+                    </p>
+
+                    <div class="mt-auto">
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Mas información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+
+                <div class="feature-item p-4 pt-0 h-100 d-flex flex-column">
+
+                    <div class="feature-icon p-4 mb-4">
+                        <i class="fa fa-clock fa-3x"></i>
+                    </div>
+                    <h4 class="mb-4">Nuestros Horarios</h4>
+
+                    <p class="mb-4">Lunes a Viernes de 08:00 hs a 20:00 hs</p>
+
+                    <div class="mt-auto">
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Mas información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+
+                <div class="feature-item p-4 pt-0 h-100 d-flex flex-column">
+
+                    <div class="feature-icon p-4 mb-4">
+                        <i class="fa fa-street-view fa-3x"></i>
+                    </div>
+                    <h4 class="mb-4">Donde Estamos</h4>
+
+                    <p class="mb-4">Carrer de Francesc Pi i Margall, 3007007 – Palma de Mallorca</p>
+
+                    <div class="mt-auto">
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Mas información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Nuestras características FIN -->
+
+<!-- Sección de Video inicio -->
+
+<div class="container-fluid bg-light py-5">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 wow fadeInUp" data-wow-delay="0.2s">
+                <!-- Recuadro blanco que contiene el título, video, texto y la imagen -->
+
+                <div class="bg-white rounded p-5">
+
+                    <div class="row align-items-center">
+                        <!-- Columna para el título -->
+
+                        <div class="col-lg-6">
+                            <h4 class="text-primary">Así de sencillo.</h4>
+                            <h1 class="display-5 mb-4">Te contamos en un minuto cómo conseguir la mejor hipoteca.</h1>
+                        </div>
+                        <!-- Columna para el video con controles personalizados -->
+
+                        <div class="col-lg-6">
+
+                            <div class="video-container position-relative">
+                                <video id="customVideo" class="rounded w-100 custom-video" autoplay loop muted>
+                                    <source src="{{ url_for('static', path='video/sabadell.mp4') }}" type="video/mp4">
+                                    Tu navegador no soporta videos en HTML5.
+                                </video>
+                                <!-- Controles personalizados -->
+
+                                <div class="video-controls d-flex justify-content-center align-items-center mt-2">
+                                    <button id="playPause" class="btn btn-primary rounded-pill me-3">
+                                        <i id="playPauseIcon" class="fa fa-play"></i>
+                                    </button>
+                                    <input id="progressBar" type="range" class="form-range custom-progress" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Texto debajo del título y video -->
+
+                    <div class="mt-4">
+
+                        <p class="lead fs-4 mb-4 text-center">
+                            <span class="text-primary fw-bold"><u>Consigue ofertas personalizadas</u></span> de hasta
+                            <span class="text-primary fw-bold"><u>20 bancos sin tener que solicitarlas</u></span> una por una.
+                        </p>
+                    </div>
+                    <!-- Logos bancos -->
+
+                    <div class="text-center">
+                        <img width="550px" src="{{ url_for('static', path='img/logos-bancos.png') }}" alt="Imágenes bancos" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cargo script para el reproductor custom-->
+<script src="{{ url_for('static', path='js/video-home.js') }}"></script>
+
+<!-- Sección de Video Fin -->
+
+<!-- Nuestros servicios inicio -->
+
+<div class="container-fluid service py-5">
+
+    <div class="container py-5">
+
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Nuestros Servicios</h4>
+            <h1 class="display-4 mb-4">Máxima financiación en tus hipotecas, créditos y préstamos</h1>
+
+            <p class="mb-0">La total transparencia de los precios es la base fundamental para asegurar un buen trabajo un equipo basado en la confianza. Es por eso que nosotros ofrecemos precios justos y transparentes; sin cargos ocultos ni costos adicionales.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Fila superior -->
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-1.png') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-university fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Hipotecas fijas</a>
+
+                            <p class="mb-4">Hacemos que los bancos compitan entre ellos para darte la mejor hipoteca fija. Es gratis, rápido y seguro.
+                                <br><br><br><br> <!-- Línea adicional para la altura -->
+                            </p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-2.jpg') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-arrow-up fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Mejorar tu Hipoteca</a>
+
+                            <p class="mb-4">Reduce tu cuota mensual con un cambio de hipoteca No tienes que quedarte casado con tu hipoteca, puedes cambiarla cuantas veces quieras. ¡Y en GoodConditions te ayudamos a encontrar las mejores condiciones para la subrogación de tu hipoteca!</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-3.jpg') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-briefcase fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Hipoteca para autónomos</a>
+
+                            <p class="mb-4">Un emprendedor necesita una hipoteca a su altura. Y con nuestra subasta tú podrás elegir al mejor postor a la altura de lo que buscas. Es gratis, rápido y seguro.
+                                <br><br><br> <!-- Línea adicional para la altura -->
+                            </p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fila inferior -->
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-4.jpg') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-building fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Hipoteca para funcionarios</a>
+
+                            <p class="mb-4">Bancos y brókers competirán por darte las mejores condiciones en tu hipoteca para funcionarios, pudiendo conseguir hasta el 100% de financiación. ¡Es una subasta 100% real! Y tú podrás elegir al mejor postor. Es gratis, rápido y seguro.</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-5.jpg') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Préstamos personales</a>
+
+                            <p class="mb-4">Aquí podrás encontrar las mejores ofertas, para que puedas elegir la que más se ajuste a tus necesidades.
+                                <br><br><br> <!-- Línea adicional para la altura -->
+                            </p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex">
+
+                <div class="service-item d-flex flex-column h-100">
+
+                    <div class="service-img">
+                        <img src="{{ url_for('static', path='img/servicio-6.jpeg') }}" class="img-fluid rounded-top w-100" alt="">
+
+                        <div class="service-icon p-3">
+                            <i class="fa fa-calculator fa-2x"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-content p-4 flex-grow-1">
+
+                        <div class="service-content-inner">
+                            <a href="#" class="d-inline-block h4 mb-4">Reunificación de deudas</a>
+
+                            <p class="mb-4">Consolidamos tus deudas para que puedas pagar tus créditos con intereses más bajos en la cantidad de cuotas que necesites.
+                                <br><br><br> <!-- Línea adicional para la altura -->
+                            </p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Ver servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Nuestros servicios FIN -->
+
+<!-- Estadísticas App inicio -->
+
+<div class="container-fluid bg-light about pb-5">
+
+    <div class="container pb-5">
+
+        <div class="row g-5">
+
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+
+                <div class="about-item-content bg-white rounded p-5 h-100">
+                    <h4 class="text-primary">Sobre GoodConditions</h4>
+                    <h1 class="display-4 mb-4">Los datos nos avalan</h1>
+
+                    <p>¡Registrarte en GoodConditions! y, para hacerlo, sólo necesitas 4 minutos.
+                        Es imprescindible que completes el formulario para poder acceder a los servicios.
+                    </p>
+
+                    <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Honestidad: No escondemos la letra pequeña.</p>
+
+                    <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Discreción: Puedes contar con nosotros en todo momento.</p>
+
+                    <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Seriedad: Nuestro personal está siempre a tu disposición.</p>
+
+                    <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Seguridad: Tus documentos son guardados con seguridad.</p>
+
+                    <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Fiabilidad: Puedes confiar plenamente en nosotros.</p>
+
+                    <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Trabajo en equipo: Juntos solucionamos cualquier problema.</p>
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="#">Empecemos</a>
+                </div>
+            </div>
+
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+
+                <div class="bg-white rounded p-5 h-100">
+
+                    <div class="row g-4 justify-content-center">
+
+                        <div class="col-12">
+
+                            <div class="rounded bg-light">
+                                <img src="{{ url_for('static', path='img/estadisticas-home.gif') }}" class="img-fluid rounded w-100" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="counter-item bg-light rounded p-3 h-100">
+
+                                <div class="counter-counting">
+                                    <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">129</span>
+                                    <span class="h1 fw-bold text-primary">+</span>
+                                </div>
+                                <h4 class="mb-0 text-dark">Bancos y brókers*</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="counter-item bg-light rounded p-3 h-100">
+
+                                <div class="counter-counting">
+                                    <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">345</span>
+                                    <span class="h1 fw-bold text-primary">+</span>
+                                </div>
+                                <h4 class="mb-0 text-dark">Subastas realizadas</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="counter-item bg-light rounded p-3 h-100">
+
+                                <div class="counter-counting">
+                                    <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">125</span>
+                                    <span class="h1 fw-bold text-primary">+</span>
+                                </div>
+                                <h4 class="mb-0 text-dark">Subastas aceptadas</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="counter-item bg-light rounded p-3 h-100">
+
+                                <div class="counter-counting">
+                                    <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">43</span>
+                                    <span class="h1 fw-bold text-primary">+</span>
+                                </div>
+                                <h4 class="mb-0 text-dark">Intermediarios de crédito</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Estadísticas App FIN -->
+
+<!-- Preguntas frecuentes inicio -->
+
+<div class="container-fluid faq-section bg-light py-5">
+
+    <div class="container py-5">
+
+        <div class="row g-5 align-items-center">
+
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+
+                <div class="h-100">
+
+                    <div class="mb-5">
+                        <h4 class="text-primary">Preguntas frecuentes</h4>
+                        <h1 class="display-4 mb-0">Estas son algunas preguntas que nos suelen hacer</h1>
+                    </div>
+
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    P: ¿Qué necesito para que los bancos me ofrezcan crédito??
+                                </button>
+                            </h2>
+
+                            <div id="collapseOne" class="accordion-collapse collapse show active" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body rounded">
+                                    R: ¡Registrarte en GoodConditions! y, para hacerlo, sólo necesitas 4 minutos. Es imprescindible que completes el formulario para poder acceder al panel de cliente.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    P: ¿Cuándo comenzaré a recibir ofertas de hipotecas?
+                                </button>
+                            </h2>
+
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body">
+                                    R: Una vez nuestros servicios de verificación hayan verificado tu perfil y solicitud, los Intermediarios de crédito te ofrecerán las mejores condiciones en un plazo de 72 horas.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    P: ¿Cuándo acaba la subasta?
+                                </button>
+                            </h2>
+
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body">
+                                    R: Cuando eliges tus ofertas ganadoras, o cuando terminan las 24 horas, lo que ocurra antes. Recuerda que en ningún caso te cobraremos nada por nuestro servicio, tanto si aceptas ofertas como si desistes de la subasta.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Preguntas frecuentes FIN -->
+
+<!-- Reseñas google inicio -->
+
+<div class="container-fluid testimonial pb-5">
+    <br>
+
+    <div class="container pb-5">
+
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Reseñas</h4>
+            <h1 class="display-4 mb-4">Lo que dicen nuestros clientes sobre nosotros</h1>
+
+            <p class="mb-0">Ellos ya consiguieron la mejor hipoteca</p>
+        </div>
+
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
+
+            <div class="testimonial-item bg-light rounded">
+
+                <div class="row g-0">
+
+                    <div class="col-4  col-lg-4 col-xl-3">
+
+                        <div class="h-100">
+                            <img src="{{ url_for('static', path='img/ico-reseña-1.png') }}" class="img-fluid h-100 rounded" style="object-fit: cover;" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-lg-8 col-xl-9">
+
+                        <div class="d-flex flex-column my-auto text-start p-4">
+                            <h4 class="text-dark mb-0">JOSE LUIS PEREZ</h4>
+
+                            <p class="mb-3">21/07/2024</p>
+
+                            <div class="d-flex text-primary mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                            <p class="mb-0">Mandé a a mi hermano porque no conseguía una hipoteca para su casa ,porque las condiciones que le daban eran muy caras.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-light rounded">
+
+                <div class="row g-0">
+
+                    <div class="col-4  col-lg-4 col-xl-3">
+
+                        <div class="h-100">
+                            <img src="{{ url_for('static', path='img/ico-reseña-2.png') }}" class="img-fluid h-100 rounded" style="object-fit: cover;" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-lg-8 col-xl-9">
+
+                        <div class="d-flex flex-column my-auto text-start p-4">
+                            <h4 class="text-dark mb-0">Valentina</h4>
+
+                            <p class="mb-3">26/07/2024</p>
+
+                            <div class="d-flex text-primary mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star text-body"></i>
+                            </div>
+
+                            <p class="mb-0">Estoy encantada con Celia. Desde el principio me explicó todo que tenía lo que podía hacer y los pasos que ibamos a seguir.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item bg-light rounded">
+
+                <div class="row g-0">
+
+                    <div class="col-4  col-lg-4 col-xl-3">
+
+                        <div class="h-100">
+                            <img src="{{ url_for('static', path='img/ico-reseña-3.png') }}" class="img-fluid h-100 rounded" style="object-fit: cover;" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-lg-8 col-xl-9">
+
+                        <div class="d-flex flex-column my-auto text-start p-4">
+                            <h4 class="text-dark mb-0">Allo Gráficas</h4>
+
+                            <p class="mb-3">06/09/2024</p>
+
+                            <div class="d-flex text-primary mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star text-body"></i>
+                                <i class="fas fa-star text-body"></i>
+                            </div>
+
+                            <p class="mb-0">La mejor en su sector. Sólo con ella he conseguido la hipoteca que nadie me quería dar.<br><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reseñas google FIN -->
+
+{% endblock %}
